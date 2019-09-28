@@ -213,7 +213,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="{{asset('asset/page/css/open-iconic-bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('asset/page/css/animate.css')}}
+	<link rel="stylesheet" href="{{asset('asset/page/css/animate.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/owl.carousel.min.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/owl.theme.default.min.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/magnific-popup.css')}}">
