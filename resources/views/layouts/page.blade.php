@@ -64,6 +64,14 @@
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="/">BNSVN</a>
+			<div class="time pl-3" id="days"></div>
+			<div class="time" id="months"></div>
+			<div class="time" id="years"></div>
+			<div class="time pl-3" id="hours"></div>
+			<div class="time" id="minutes"></div>
+			<div class="time" id="seconds"></div>
+			<div class="time pl-3"></div>
+			
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -103,7 +111,6 @@
 					</li>
 					<li class="nav-item"><a href="#" class="nav-link"><img style="height: 19px; border-radius: 50%;" src="{{$user_now->avatar_url}}"></a></li>
 					@endif
-
 				</ul>
 			</div>
 		</div>
@@ -162,41 +169,41 @@
 				</div>
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4 ml-md-5">
-						<h2 class="ftco-heading-2">Menu</h2>
+						<h2 class="ftco-heading-2">Garena BNS</h2>
 						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Shop</a></li>
-							<li><a href="#" class="py-2 d-block">About</a></li>
-							<li><a href="#" class="py-2 d-block">Journal</a></li>
-							<li><a href="#" class="py-2 d-block">Contact Us</a></li>
+							<li><a href="https://bns.garena.vn/" class="py-2 d-block">Giới thiệu</a></li>
+							<li><a href="https://bns.garena.vn/main" class="py-2 d-block">Trang chủ</a></li>
+							<li><a href="https://quatang.bns.garena.vn/" class="py-2 d-block">Quà tặng</a></li>
+							<li><a href="https://dovui.bns.garena.vn/" class="py-2 d-block">Đố vui</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Help</h2>
+						<h2 class="ftco-heading-2">Event + Pay</h2>
 						<div class="d-flex">
 							<ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-								<li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-								<li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-								<li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-								<li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+								<li><a href="https://vip.bns.garena.vn/" class="py-2 d-block">VIP</a></li>
+								<li><a href="https://box.bns.garena.vn/" class="py-2 d-block">Box</a></li>
+								<li><a href="https://event.bns.garena.vn/" class="py-2 d-block">Event</a></li>
+								<li><a href="https://khuyenmai.bns.garena.vn/" class="py-2 d-block">Khuyến mãi</a></li>
 							</ul>
 							<ul class="list-unstyled">
-								<li><a href="#" class="py-2 d-block">FAQs</a></li>
-								<li><a href="#" class="py-2 d-block">Contact</a></li>
+								<li><a href="https://shop.bns.garena.vn/" class="py-2 d-block">Shop</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<h2 class="ftco-heading-2">Thời gian cập nhật</h2>
 						<div class="block-23 mb-3">
-							<ul>
+							<!-- <ul>
 								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
 								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
 								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-							</ul>
+							</ul> -->
+							<span>Bản mod sẽ được tung ra sau 3-12h kể từ khi bản cập nhật mới được update trên máy chủ chính thức. (chậm nhất là 24h)</span>
 						</div>
 					</div>
 				</div>
