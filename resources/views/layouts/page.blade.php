@@ -9,6 +9,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="{{asset('asset/page/css/open-iconic-bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/animate.css')}}">
@@ -23,6 +24,7 @@
 
 	<link rel="stylesheet" href="{{asset('asset/page/css/bootstrap-datepicker.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/jquery.timepicker.css')}}">
+	<link rel="stylesheet" href="{{asset('asset/page/css/bootstrap-social.css')}}">
 
 
 	<link rel="stylesheet" href="{{asset('asset/page/css/flaticon.css')}}">
@@ -32,7 +34,12 @@
 
 
 <body class="goto-here">
-	<div class="py-1 bg-primary">
+
+	<form id="signout" action="/signout" method="POST">
+		@csrf
+	</form>
+
+	<!-- <div class="py-1 bg-primary">
 		<div class="container">
 			<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
 				<div class="col-lg-12 d-block">
@@ -52,18 +59,19 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Vegefoods</a>
+			<a class="navbar-brand" href="/">BNSVN</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-					<li class="nav-item dropdown">
+					<li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
+					<!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
 						<div class="dropdown-menu" aria-labelledby="dropdown04">
 							<a class="dropdown-item" href="shop.html">Shop</a>
@@ -72,17 +80,63 @@
 							<a class="dropdown-item" href="cart.html">Cart</a>
 							<a class="dropdown-item" href="checkout.html">Checkout</a>
 						</div>
+					</li> -->
+					<li class="nav-item"><a href="{{$facebook->value}}" target="_blank" class="nav-link">Facebook</a></li>
+					<li class="nav-item"><a href="{{$youtube->value}}" target="_blank" class="nav-link">Youtube</a></li>
+					<li class="nav-item"><a href="https://discord.gg/JtcN8yF" target="_blank" class="nav-link">Discord</a></li>
+					@if(!Auth::check())
+					<li class="nav-item cta cta-colored">
+						<a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">
+							Đăng nhập
+						</a>
 					</li>
-					<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-					<li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
+					@else
+                    <li class="nav-item"></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{Auth::user()->name}}!</a>
+						<div class="dropdown-menu" aria-labelledby="user_dropdown">
+							@if(Auth::user()->role_id == 1)
+							<a class="dropdown-item" href="/admin" >Admin Panel</a>
+							@endif
+							<a class="dropdown-item" href="javascript: $('#signout').submit();">Đăng xuất</a>
+						</div>
+					</li>
+					<li class="nav-item"><a href="#" class="nav-link"><img style="height: 19px; border-radius: 50%;" src="{{$user_now->avatar_url}}"></a></li>
+					@endif
 
 				</ul>
 			</div>
 		</div>
 	</nav>
+
+	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="login100-form-social flex-c-m">
+						<a href="/auth/facebook" class="btn btn-block btn-social btn-facebook">
+							<span class="fab fa-facebook-f"></span> Sign in with Facebook
+						</a>
+						<a href="/auth/google" class="btn btn-block btn-social btn-google">
+							<span class="fab fa-google"></span> Sign in with Google
+						</a>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- END nav -->
+
 	@yield('content')
 
 	<footer class="ftco-footer ftco-section">
@@ -97,12 +151,12 @@
 			<div class="row mb-5">
 				<div class="col-md">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Vegefoods</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+						<h2 class="ftco-heading-2">Blade & Soul Việt Nam</h2>
+						<p>Chơi game theo cách của bạn!</p>
 						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+							<li class="ftco-animate"><a href="{{$facebook->value}}"><span class="fab fa-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="{{$youtube->value}}"><span class="fab fa-youtube"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="fab fa-discord"></span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -149,20 +203,15 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-
 					<p>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;<script>
 							document.write(new Date().getFullYear());
-						</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</script> All rights reserved | <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://www.facebook.com/ntuan.2502" target="_blank">NAT - Coder Fix Bug</a>
 					</p>
 				</div>
 			</div>
 		</div>
 	</footer>
-
-
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

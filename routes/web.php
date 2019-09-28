@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index')->name('index');
+Route::post('/signout', 'HomeController@signoutPOST')->name('');
+
+//Social Login
+Route::get('/auth/{provider}', 'UserSocialController@redirectToProvider')->name('');
+Route::get('/auth/{provide}/callback', 'UserSocialController@handleProviderCallback')->name('');
 
 // Auth::routes();
 
