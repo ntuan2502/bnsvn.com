@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::post('/signout', 'HomeController@signoutPOST')->name('');
+Route::get('/chuyen-muc/{url}', 'HomeController@category')->name('');
+Route::get('/bai-viet/{url}', 'HomeController@post');
 
 //Social Login
 Route::get('/auth/{provider}', 'UserSocialController@redirectToProvider')->name('');

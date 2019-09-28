@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+	<!-- <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -30,10 +30,13 @@
 	<link rel="stylesheet" href="{{asset('asset/page/css/flaticon.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/icomoon.css')}}">
 	<link rel="stylesheet" href="{{asset('asset/page/css/style.css')}}">
+	@yield('header')
 </head>
 
 
 <body class="goto-here">
+
+	{!! $messenger->value !!}
 
 	<form id="signout" action="/signout" method="POST">
 		@csrf
@@ -71,7 +74,7 @@
 			<div class="time" id="minutes"></div>
 			<div class="time" id="seconds"></div>
 			<div class="time pl-3"></div>
-			
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -99,12 +102,12 @@
 						</a>
 					</li>
 					@else
-                    <li class="nav-item"></li>
-					<li class="nav-item dropdown">
+					<li class="nav-item"></li>
+					<li class="nav-item dropdown cta cta-colored">
 						<a class="nav-link dropdown-toggle" href="#" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi, {{Auth::user()->name}}!</a>
 						<div class="dropdown-menu" aria-labelledby="user_dropdown">
 							@if(Auth::user()->role_id == 1)
-							<a class="dropdown-item" href="/admin" >Admin Panel</a>
+							<a class="dropdown-item" href="/admin">Admin Panel</a>
 							@endif
 							<a class="dropdown-item" href="javascript: $('#signout').submit();">Đăng xuất</a>
 						</div>
@@ -144,7 +147,7 @@
 	</div>
 	<!-- END nav -->
 
-	@yield('content')
+	@yield('body')
 
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
@@ -244,6 +247,8 @@
 	<script src="{{asset('asset/page/js/scrollax.min.js')}}"></script>
 	<!-- <script src="{{asset('asset/page/js/google-map.js')}}"></script> -->
 	<script src="{{asset('asset/page/js/main.js')}}"></script>
+
+	@yield('footer')
 
 </body>
 
