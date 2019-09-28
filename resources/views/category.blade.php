@@ -6,7 +6,7 @@
 
 @section('body')
 <div>
-  <div class="hero-wrap hero-bread" style="background-image: url({{$category->background_url}});">
+  <div class="hero-wrap hero-bread" style="background-image: url({{asset($category->background_url)}});">
     <div class="overlay" style="opacity: .6; width: 100%; background: #000000;"></div>
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -34,7 +34,7 @@
         @foreach($posts as $post)
         <div class="col-md-12 d-flex ftco-animate">
           <div class="blog-entry align-self-stretch d-md-flex">
-            <a href="/bai-viet/{{$post->url}}" class="block-20" style="background-image: url({{$post->image_url}});">
+            <a href="/bai-viet/{{$post->url}}" class="block-20" style="background-image: url({{asset($post->image_url)}});">
             </a>
             <div class="text d-block pl-md-4">
               <div class="meta mb-3">
@@ -59,7 +59,7 @@
         </div>
         @endif
       </div>
-      
+
       <div class="row mt-5">
         <div class="col text-center">
           <div class="block-27">

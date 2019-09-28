@@ -7,7 +7,7 @@
 
 	<section id="home-section" class="hero">
 		<div class="home-slider owl-carousel">
-			<div class="slider-item" style="background-image: url({{$background->value}});">
+			<div class="slider-item" style="background-image: url({{asset($background->value)}});">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -15,14 +15,44 @@
 						<div class="col-md-12 ftco-animate text-center">
 							<h1 class="mb-2">{{$heading->value}}</h1>
 							<h2 class="subheading mb-4">Phiên bản {{$version->value}} - Cập nhật {{$update_time->value}}</h2>
-							<p><a href="#" class="btn btn-primary">View Details</a></p>
+							<!-- <a><a href="#" class="btn btn-primary">View Details</a></p> -->
+							@if(Auth::check())
+							<p>
+								@if($download->value == 'on')
+								@if($mod_32bit->value)
+								<a href="{{$mod_32bit->value}}" class="btn btn-primary py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									Download (32 bit mod)
+								</a>
+								@endif
+								@if($mod_64bit->value)
+								<a href="{{$mod_64bit->value}}" class="btn btn-white py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									Download (64 bit mod)
+								</a>
+								@endif
+								@else
+								<a class="btn btn-white py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									File đang cập nhật. Vui lòng quay lại sau!
+								</a>
+								@endif
+							</p>
+							@else
+							<p>
+								<a href="#" class="btn btn-white py-3 px-4" data-toggle="modal" data-target="#loginModal">
+									<span class=""><i class="fas fa-download"></i></span>
+									Vui lòng đăng nhập để tải mod!
+								</a>
+							</p>
+							@endif
 						</div>
 
 					</div>
 				</div>
 			</div>
 
-			<div class="slider-item" style="background-image: url({{$background->value}});">
+			<div class="slider-item" style="background-image: url({{asset($background->value)}});">
 				<div class="overlay"></div>
 				<div class="container">
 					<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -30,7 +60,37 @@
 						<div class="col-sm-12 ftco-animate text-center">
 							<h1 class="mb-2">{{$heading->value}}</h1>
 							<h2 class="subheading mb-4">Phiên bản {{$version->value}} - Cập nhật {{$update_time->value}}</h2>
-							<p><a href="#" class="btn btn-primary">View Details</a></p>
+							<!-- <a><a href="#" class="btn btn-primary">View Details</a></p> -->
+							@if(Auth::check())
+							<p>
+								@if($download->value == 'on')
+								@if($mod_32bit->value)
+								<a href="{{$mod_32bit->value}}" class="btn btn-primary py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									Download (32 bit mod)
+								</a>
+								@endif
+								@if($mod_64bit->value)
+								<a href="{{$mod_64bit->value}}" class="btn btn-white py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									Download (64 bit mod)
+								</a>
+								@endif
+								@else
+								<a class="btn btn-white py-3 px-4">
+									<span class=""><i class="fas fa-download"></i></span>
+									File đang cập nhật. Vui lòng quay lại sau!
+								</a>
+								@endif
+							</p>
+							@else
+							<p>
+								<a href="#" class="btn btn-white py-3 px-4" data-toggle="modal" data-target="#myModal">
+									<span class=""><i class="fas fa-download"></i></span>
+									Vui lòng đăng nhập để tải mod!
+								</a>
+							</p>
+							@endif
 						</div>
 
 					</div>
@@ -39,7 +99,7 @@
 		</div>
 	</section>
 
-	<section class="ftco-section testimony-section" >
+	<section class="ftco-section testimony-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
@@ -54,7 +114,7 @@
 						@foreach($sects_all as $hephai)
 						<div class="item">
 							<div class="testimony-wrap p-4 pb-5">
-								<div class="user-img mb-5" style="background-image: url({{$hephai->icon_url}}); background-position: bottom;">
+								<div class="user-img mb-5" style="background-image: url({{asset($hephai->icon_url)}}); background-position: bottom;">
 								</div>
 								<div class="text text-center">
 									<p class="mb-5 pl-4 line">{{$hephai->abstract}}</p>
@@ -132,17 +192,17 @@
 				@foreach($posts as $post)
 				<div class="col-md-12 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch d-md-flex">
-						<a href="/bai-viet/{{$post->url}}" class="block-20" style="background-image: url({{$post->image_url}});">
+						<a href="/bai-viet/{{$post->url}}" class="block-20" style="background-image: url({{asset($post->image_url)}});">
 						</a>
 						<div class="text d-block pl-md-4">
-						<div class="meta mb-3">
-							<div><a>{{$post->day}} Thg {{$post->month}} {{$post->year}}</a></div>
-							<div><a>Admin</a></div>
-							<div><a class="meta-chat"><span class="fas fa-eye"></span> {{$post->views}}</a></div>
-						</div>
-						<h3 class="heading"><a href="/bai-viet/{{$post->url}}">{{$post->name}}</a></h3>
-						<p>{{$post->abstract}}</p>
-						<p><a href="/bai-viet/{{$post->url}}" class="btn btn-primary py-2 px-3">Xem chi tiết</a></p>
+							<div class="meta mb-3">
+								<div><a>{{$post->day}} Thg {{$post->month}} {{$post->year}}</a></div>
+								<div><a>Admin</a></div>
+								<div><a class="meta-chat"><span class="fas fa-eye"></span> {{$post->views}}</a></div>
+							</div>
+							<h3 class="heading"><a href="/bai-viet/{{$post->url}}">{{$post->name}}</a></h3>
+							<p>{{$post->abstract}}</p>
+							<p><a href="/bai-viet/{{$post->url}}" class="btn btn-primary py-2 px-3">Xem chi tiết</a></p>
 						</div>
 					</div>
 				</div>

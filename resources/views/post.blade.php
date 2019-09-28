@@ -5,7 +5,7 @@
 
 @section('body')
 <div>
-  <div class="hero-wrap hero-bread" style="background-image: url({{$post->image_url}});">
+  <div class="hero-wrap hero-bread" style="background-image: url({{asset($post->image_url)}});">
     <div class="overlay" style="opacity: .6; width: 100%; background: #000000;"></div>
     <div class="container">
       <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -197,7 +197,7 @@
             <h3 class="heading">Bài viết khác</h3>
             @foreach($orther as $orth)
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({{$orth->image_url}});"></a>
+              <a class="blog-img mr-4" style="background-image: url({{asset($orth->image_url)}});"></a>
               <div class="text">
                 <h3 class="heading-1"><a href="/bai-viet/{{$orth->url}}">{{$orth->name}}</a></h3>
                 <div class="meta">
