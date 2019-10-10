@@ -1,6 +1,11 @@
 @extends('layouts.page')
 @section('header')
 <title>{{$post->name}}</title>
+<meta property="og:url" content="{{URL::current()}}" />
+<meta property="og:type" content="Website" />
+<meta property="og:title" content="{{$post->name}}" />
+<meta property="og:description" content="{{$post->abstract}}" />
+<meta property="og:image" content="{{asset($post->image_url)}}" />
 @endsection
 
 @section('body')

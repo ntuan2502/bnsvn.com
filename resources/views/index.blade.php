@@ -1,6 +1,11 @@
 @extends('layouts.page')
 @section('header')
 <title>Blade & Soul VN</title>
+<meta property="og:url" content="{{URL::current()}}" />
+<meta property="og:type" content="Website" />
+<meta property="og:title" content="Blade & Soul Việt Nam" />
+<meta property="og:description" content="Blade & Soul Việt Nam" />
+<meta property="og:image" content="{{asset($background->value)}}" />
 @endsection
 @section('body')
 <div id="page">
